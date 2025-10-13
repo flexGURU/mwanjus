@@ -1,0 +1,94 @@
+<section id="equipment" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span
+        class="text-green-600 font-semibold text-sm uppercase tracking-wider"
+        >Our Fleet</span
+      >
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">
+        Premium Equipment Rental
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        From batching plants and mixers to cranes, forklifts, and excavators—we
+        provide top-performance machinery ready for rental.
+      </p>
+    </div>
+
+    <div class="flex justify-center mb-8 flex-wrap gap-3">
+      <button
+        *ngFor="let cat of categories"
+        (click)="selectedCategory = cat"
+        [class.bg-green-600]="selectedCategory === cat"
+        [class.text-white]="selectedCategory === cat"
+        [class.bg-gray-200]="selectedCategory !== cat"
+        [class.text-gray-700]="selectedCategory !== cat"
+        class="px-6 py-2 rounded-full font-semibold transition-all hover:bg-green-500 hover:text-white"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        *ngFor="let item of getFilteredEquipment()"
+        class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2"
+      >
+        <div
+          class="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden"
+        >
+          <img
+            [src]="item.image"
+            [alt]="item.name"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-4 right-4">
+            <span
+              class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold"
+            >
+              {{ item.category }}
+            </span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{{ item.name }}</h3>
+          <div class="space-y-2 mb-6">
+            <div
+              *ngFor="let spec of item.specs"
+              class="flex justify-between text-sm"
+            >
+              <span class="text-gray-600">{{ spec.label }}:</span>
+              <span class="font-semibold text-gray-900">{{ spec.value }}</span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="flex-1 bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+            >
+              Rent Now
+            </button>
+            <button
+              class="px-4 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+            >
+              Details
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 bg-gray-900 rounded-2xl p-12 text-center">
+      <h3 class="text-3xl font-bold text-white mb-4">
+        Can't Find What You Need?
+      </h3>
+      <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+        We have more equipment available. Contact us for custom requirements or
+        special projects.
+      </p>
+      <a href="#contact"
+        class="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors"
+      >
+        Contact Our Team
+    </a>
+    </div>
+  </div>
+</section>
