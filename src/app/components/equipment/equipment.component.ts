@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
+import { DetailComponent } from '../../modal/detail/details.component';
 
-interface Equipment {
+export interface Equipment {
   name: string;
   category: string;
   specs: { label: string; value: string }[];
@@ -10,11 +11,12 @@ interface Equipment {
 
 @Component({
   selector: 'app-equipment',
-  imports: [CommonModule],
+  imports: [CommonModule, DetailComponent],
   templateUrl: './equipment.component.html',
   styleUrl: './equipment.component.css',
 })
 export class EquipmentComponent {
+  selectedEquipment = signal<Equipment | undefined>(undefined);
   selectedCategory = 'All';
   categories = [
     'All',
@@ -34,8 +36,7 @@ export class EquipmentComponent {
         { label: 'Power', value: '100kwh' },
         { label: 'Discharge Height', value: '4m' },
       ],
-      image:
-        '/assets/batching plant.png',
+      image: '/assets/batching plant.png',
     },
 
     {
@@ -87,8 +88,7 @@ export class EquipmentComponent {
         { label: 'Engine Power', value: '134kW' },
         { label: 'Capacity', value: '1.0-1.1m³' },
       ],
-      image:
-        'assets/excavater.png',
+      image: 'assets/excavater.png',
     },
     {
       name: 'Pneumatic Roller',
@@ -98,8 +98,7 @@ export class EquipmentComponent {
         { label: 'Max Ballast', value: '27000kg' },
         { label: 'Compaction Width', value: '2090mm' },
       ],
-      image:
-        'assets/pnemantic roller.jpeg',
+      image: 'assets/pnemantic roller.jpeg',
     },
     {
       name: 'Wheel Roller',
@@ -109,8 +108,7 @@ export class EquipmentComponent {
         { label: 'Compaction Width', value: '2134mm' },
         { label: 'Gross Power', value: '83.8kW' },
       ],
-      image:
-        'assets/wheel roller.jpeg',
+      image: 'assets/wheel roller.jpeg',
     },
     {
       name: 'Backhoe',
@@ -120,8 +118,7 @@ export class EquipmentComponent {
         { label: 'Operating Weight', value: '8275kg' },
         { label: 'Max Weight', value: '11000kg' },
       ],
-      image:
-        'assets/Back hoe.jpeg',
+      image: 'assets/Back hoe.jpeg',
     },
     {
       name: 'Motor Grader',
@@ -131,8 +128,7 @@ export class EquipmentComponent {
         { label: 'Operating Weight', value: '14254kg' },
         { label: 'Blade Width', value: '3.7m' },
       ],
-      image:
-        'assets/motor grader.jpeg',
+      image: 'assets/motor grader.jpeg',
     },
     {
       name: 'Tipper Truck',
@@ -142,8 +138,7 @@ export class EquipmentComponent {
         { label: 'GVW', value: '26000kg' },
         { label: 'Fuel Capacity', value: '370L' },
       ],
-      image:
-        'assets/Tipper.jpg',
+      image: 'assets/Tipper.jpg',
     },
   ];
 
@@ -154,5 +149,9 @@ export class EquipmentComponent {
     return this.equipment.filter(
       (item) => item.category === this.selectedCategory
     );
+  }
+
+  viewDetails() {
+    this.selectedEquipment.set(undefined);
   }
 }
