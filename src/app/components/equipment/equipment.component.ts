@@ -58,7 +58,7 @@ export class EquipmentComponent {
         { label: 'Load Moment', value: '1112kN.m' },
       ],
       image:
-        'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400',
+        'assets/mobile crane.png',
     },
     {
       name: 'Forklift',

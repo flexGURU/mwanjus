@@ -2,7 +2,16 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <div class="flex items-center">
-        <div class="text-3xl font-bold text-green-600">Mwanjus</div>
+        <a
+          href="#home"
+          class="flex items-center space-x-2 bg-slate-700 p-2 rounded-md"
+        >
+          <img
+            src="assets/LOGO%202.png"
+            alt="Mwanjus logo"
+            class="h-10 w-auto"
+          />
+        </a>
         <div class="hidden md:block ml-10">
           <div class="flex space-x-8">
             <a
@@ -68,6 +77,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Menu -->
   <div *ngIf="isMenuOpen" class="md:hidden bg-white border-t">
     <div class="px-4 pt-4 pb-6 space-y-3">
       <a href="#home" class="block text-gray-700 hover:text-green-600 py-2"
@@ -79,9 +90,7 @@
       <a href="#services" class="block text-gray-700 hover:text-green-600 py-2"
         >Services</a
       >
-      <a
-        href="#equipment"
-        class="block text-gray-700 hover:text-green-600 py-2"
+      <a href="#equipment" class="block text-gray-700 hover:text-green-600 py-2"
         >Equipment</a
       >
       <a href="#contact" class="block text-gray-700 hover:text-green-600 py-2"

@@ -12,8 +12,6 @@ export class DetailComponent {
   @Output() close = new EventEmitter<void>();
 
   closeModal() {
-    console.log('Closing modal from detail component');
-    
     this.close.emit();
   }
 }
